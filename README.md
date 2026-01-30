@@ -12,3 +12,4 @@ https://www.ti.com/lit/ds/symlink/lmp7721.pdf?ts=1769807145680&ref_url=https%253
 ![PCB Front](/img/pcb_front.png)
 ![](img/Zpool.png)
 ![Schéma](/img/zpool_schema.png)
+![Boitier](/img/boitier.png)
