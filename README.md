@@ -16,3 +16,6 @@ Utilisation d'un ESP32C6 pour en faire un en-device Zigbee
 ![](img/Zpool.png)
 ![Schéma](/img/zpool_schema.png)
 ![Boitier](/img/boitier.png)
+
+![Capteur de température DS18B20](https://fr.aliexpress.com/item/4001086169171.html)
+![Capteur de pression 30 Psi](https://fr.aliexpress.com/item/4001179110023.html)
