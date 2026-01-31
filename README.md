@@ -9,6 +9,9 @@ https://www.360customs.de/fr/2019/12/orp-redox-ph-elektrometer-shield-fuer-wemos
 
 https://www.ti.com/lit/ds/symlink/lmp7721.pdf?ts=1769807145680&ref_url=https%253A%252F%252Fwww.ti.com%252Fproduct%252FLMP7721
 
+## Xiao ESP32C6
+Utilisation d'un ESP32C6 pour en faire un en-device Zigbee
+
 ![PCB Front](/img/pcb_front.png)
 ![](img/Zpool.png)
 ![Schéma](/img/zpool_schema.png)
