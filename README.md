@@ -20,6 +20,7 @@ La gestion des pompes est assurée par des prises Zigbee c’est plus simple que
 
 <img src="/img/pcb_front.png" width="300"><img src="img/Zpool.png" width="300">
 <img src="/img/zpool_schema.png" width="300"><img src="/img/boitier.png" width="300">
+<img src="/img/carte_xiao.jpg" width="300">
 
 ![Capteur de température DS18B20](https://fr.aliexpress.com/item/4001086169171.html)
 
