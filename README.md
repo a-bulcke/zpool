@@ -26,3 +26,15 @@ La gestion des pompes est assurée par des prises Zigbee c’est plus simple que
 ![Capteur de température DS18B20](https://fr.aliexpress.com/item/4001086169171.html)
 
 ![Capteur de pression 30 Psi](https://fr.aliexpress.com/item/4001179110023.html)
+
+# Programmation #
+## Arduino IDE ##
+Dans File - Preferences... ajouter :
+
+`https://espressif.github.io/arduino-esp32/package_esp32_index.json`
+
+Choisir une carte `XIAO_ESP32C6`
+
+Dans Tools choisir `Partition scheme: "Zigbee ZCZR 4MB with spiffs"` et `Zigbee Mode: "ZCZR (coordinator/router)"`
+<img width="718" height="263" alt="image" src="https://github.com/user-attachments/assets/00f9ca7a-6e85-4ec6-9284-5f51421cac6b" />
+
