@@ -56,4 +56,4 @@ Créer un nouvea convertisseur et coller je contenu de ![ZigbeePoolSensorsCalib.
 
 <img width="445" height="243" alt="image" src="https://github.com/user-attachments/assets/ba7376f6-c386-4b8f-a940-1161fb9722e9" />
 
-Redémarrer Zigbee2mqtt
+Redémarrer Zigbee2mqtt puis autoriser l'association.
