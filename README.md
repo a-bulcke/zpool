@@ -52,6 +52,8 @@ Dans Zigbee2mqtt sous Home Assistant, laller dans le menu `Paramètres` puis `co
 
 <img width="932" height="485" alt="image" src="https://github.com/user-attachments/assets/3587991a-1328-4ba5-8004-b5564d57b140" />
 
-Créer un nouvea convertisseur et coller je contenu de .js
+Créer un nouvea convertisseur et coller je contenu de ![ZigbeePoolSensorsCalib.js](https://github.com/a-bulcke/zpool/blob/main/zigbee2mqtt/ZigbeePoolSensorsCalib.js)
 
 <img width="445" height="243" alt="image" src="https://github.com/user-attachments/assets/ba7376f6-c386-4b8f-a940-1161fb9722e9" />
+
+Redémarrer Zigbee2mqtt
