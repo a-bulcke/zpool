@@ -25,9 +25,9 @@ La gestion des pompes est assurée par des prises Zigbee c’est plus simple que
 
 
 
-![Capteur de température DS18B20](https://alishort.com/FpUbS)
+![Capteur de température DS18B20](https://fr.aliexpress.com/item/32811388557.html?)
 
-![Capteur de pression 30 Psi](https://alishort.com/NkbhU)
+![Capteur de pression 30 Psi](https://fr.aliexpress.com/item/4001179110023.html?)
 
 # Programmation #
 ## Arduino IDE ##
