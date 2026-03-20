@@ -24,7 +24,6 @@ La gestion des pompes est assurée par des prises Zigbee c’est plus simple que
 <img src="/img/zpoolv1.jpg" width="300">
 
 
-
 ![Capteur de température DS18B20](https://fr.aliexpress.com/item/32811388557.html?)
 
 ![Capteur de pression 30 Psi](https://fr.aliexpress.com/item/4001179110023.html?)
