@@ -12,7 +12,7 @@ export default {
             unit: "pH",
             cluster: "genAnalogInput",
             attribute: "presentValue",
-            reporting: {min: "MIN", max: "MAX", change: 1},
+            reporting: {min: "MIN", max: "MAX", change: 0.05},
             description: "Mesure pH",
             access: "STATE_GET",
             endpointNames: ["9"],
