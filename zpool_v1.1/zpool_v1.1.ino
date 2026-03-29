@@ -1,6 +1,6 @@
 /**
  * @brief Publication zigbee  de la temperature (DS18B20) de la pression (AN) du pH et ORP (mV) avec calibration
- * @version 1.1
+ * @version 1.11
  */
 
 #ifndef ZIGBEE_MODE_ZCZR
@@ -141,6 +141,10 @@ void setup() {
   Zigbee.addEndpoint(&zbBinaryPH4);
   Zigbee.addEndpoint(&zbBinaryPH7);
   Zigbee.addEndpoint(&zbBinaryORP);
+
+  // Forcer l'antenne externe (connecteur UFL)
+  pinMode(WIFI_ANT_CONFIG, OUTPUT);
+  digitalWrite(WIFI_ANT_CONFIG, HIGH);  // HIGH = antenne externe
 
   Serial.println("Demarrage Zigbee...");
   // Une fois tous les EP enregistrés, démarrez Zigbee en mode Routeur.
