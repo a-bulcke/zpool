@@ -143,6 +143,9 @@ void setup() {
   Zigbee.addEndpoint(&zbBinaryORP);
 
   // Forcer l'antenne externe (connecteur UFL)
+  pinMode(WIFI_ENABLE, OUTPUT);
+  digitalWrite(WIFI_ENABLE, LOW);
+  delay(100);
   pinMode(WIFI_ANT_CONFIG, OUTPUT);
   digitalWrite(WIFI_ANT_CONFIG, HIGH);  // HIGH = antenne externe
 
