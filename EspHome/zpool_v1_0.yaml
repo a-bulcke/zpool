@@ -1,0 +1,242 @@
+esphome:
+  name: pool-sensors
+  friendly_name: "Capteurs Piscine"
+  on_boot:
+    priority: 900
+    then:
+      - output.turn_off: wifi_enable
+      - output.turn_on: ant_select  # HIGH = antenne externe
+
+esp32:
+  board: seeed_xiao_esp32c6
+  framework:
+    type: esp-idf
+    version: 5.4.2
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+api:
+  encryption:
+    key: !secret api_key
+
+ota:
+  - platform: esphome
+    password: !secret ota_password
+
+logger:
+
+i2c:
+  sda: GPIO22
+  scl: GPIO23
+  scan: true
+
+# Déclaration ADS1115 pour pH et Orp
+ads1115:
+  - address: 0x48
+
+# Déclaration DS18B20 pour capteur de température
+one_wire:
+  - platform: gpio
+    pin: GPIO1
+
+# Wifi et antenne externe
+output:
+  - platform: gpio
+    pin: GPIO3
+    id: wifi_enable
+
+  - platform: gpio
+    pin: GPIO14
+    id: ant_select
+
+# ─── Globals sauvegardés en flash ────────────────────────────────────────────
+
+globals:
+  # Points de calibration pH 4.01
+  - id: ph401_mv
+    type: float
+    restore_value: true
+    initial_value: '-2.8573'
+  - id: ph401_t
+    type: float
+    restore_value: true
+    initial_value: '20.0'
+
+  # Points de calibration pH 7.00
+  - id: ph700_mv
+    type: float
+    restore_value: true
+    initial_value: '0.0'
+  - id: ph700_t
+    type: float
+    restore_value: true
+    initial_value: '20.0'
+
+  # Point de calibration ORP 256mV
+  - id: orp_v256
+    type: float
+    restore_value: true
+    initial_value: '0.256'
+
+  # Coefficient de compensation thermique (0 = désactivé)
+  - id: alpha
+    type: float
+    restore_value: true
+    initial_value: '0.0'
+
+# ─── Sensors ─────────────────────────────────────────────────────────────────
+
+sensor:
+  # Température DS18B20
+  - platform: dallas_temp
+    name: "Température piscine"
+    id: temperature
+    unit_of_measurement: "°C"
+    accuracy_decimals: 1
+    update_interval: 30s
+
+  # Pression analogique
+  - platform: adc
+    pin: GPIO0
+    name: "Pression piscine"
+    id: pression
+    update_interval: 30s
+    attenuation: 12db
+    filters:
+      - lambda: |-
+          return ((x - 0.5f) / 3.0f) * 2.068f; //2.068 bar = 30 psi
+    unit_of_measurement: "bar"
+    accuracy_decimals: 2
+
+  # ADS1115 canal pH (A0-A1)
+  - platform: ads1115
+    multiplexer: 'A0_A1'
+    gain: 4.096
+    id: ph_raw_voltage
+    update_interval: 10s
+    filters:
+      - sliding_window_moving_average:
+          window_size: 5
+          send_every: 1
+
+  # ADS1115 canal ORP (A2-A3)
+  - platform: ads1115
+    multiplexer: 'A2_A3'
+    gain: 4.096
+    id: orp_raw_voltage
+    update_interval: 10s
+    filters:
+      - sliding_window_moving_average:
+          window_size: 5
+          send_every: 1
+
+  # pH calculé avec ta formule + compensation température
+  - platform: template
+    name: "pH piscine"
+    unit_of_measurement: "pH"
+    accuracy_decimals: 2
+    update_interval: 10s
+    lambda: |-
+      float mv    = id(ph_raw_voltage).state;
+      float v401  = id(ph401_mv);
+      float v700  = id(ph700_mv);
+      float t700  = id(ph700_t);
+      float T     = id(temperature).state;
+      float a_coef = id(alpha);
+
+      if (isnan(mv) || v700 == v401) return NAN;
+
+      float a  = (7.00f - 4.01f) / (v700 - v401);
+      float b  = 7.00f - a * v700;
+      float dT = T - t700;
+      return (a + a_coef * dT) * mv + b;
+
+  # ORP calculé depuis le point de calibration 256mV
+  - platform: template
+    name: "ORP piscine"
+    unit_of_measurement: "mV"
+    accuracy_decimals: 0
+    update_interval: 10s
+    lambda: |-
+      float v     = id(orp_raw_voltage).state;
+      float v_ref = id(orp_v256);
+      if (isnan(v)) return NAN;
+      return 256.0f + (v - v_ref) * 1000.0f;
+
+  # Publication des valeurs de calibration pour suivi dans HA
+  - platform: template
+    name: "Calib pH 4.01 tension"
+    unit_of_measurement: "V"
+    accuracy_decimals: 4
+    lambda: return id(ph401_mv);
+    update_interval: 60s
+    entity_category: diagnostic
+
+  - platform: template
+    name: "Calib pH 4.01 température"
+    unit_of_measurement: "°C"
+    accuracy_decimals: 1
+    lambda: return id(ph401_t);
+    update_interval: 60s
+    entity_category: diagnostic
+
+  - platform: template
+    name: "Calib pH 7.00 tension"
+    unit_of_measurement: "V"
+    accuracy_decimals: 4
+    lambda: return id(ph700_mv);
+    update_interval: 60s
+    entity_category: diagnostic
+
+  - platform: template
+    name: "Calib pH 7.00 température"
+    unit_of_measurement: "°C"
+    accuracy_decimals: 1
+    lambda: return id(ph700_t);
+    update_interval: 60s
+    entity_category: diagnostic
+
+# ─── Boutons de calibration ───────────────────────────────────────────────────
+
+button:
+  - platform: template
+    name: "Calibration pH 4.01"
+    on_press:
+      then:
+        - lambda: |-
+            id(ph401_mv) = id(ph_raw_voltage).state;
+            id(ph401_t)  = id(temperature).state;
+            ESP_LOGI("calib", "pH 4.01 : %.4f V à %.1f°C", id(ph401_mv), id(ph401_t));
+
+  - platform: template
+    name: "Calibration pH 7.00"
+    on_press:
+      then:
+        - lambda: |-
+            id(ph700_mv) = id(ph_raw_voltage).state;
+            id(ph700_t)  = id(temperature).state;
+            ESP_LOGI("calib", "pH 7.00 : %.4f V à %.1f°C", id(ph700_mv), id(ph700_t));
+
+  - platform: template
+    name: "Calibration ORP 256mV"
+    on_press:
+      then:
+        - lambda: |-
+            id(orp_v256) = id(orp_raw_voltage).state;
+            ESP_LOGI("calib", "ORP 256mV : %.4f V", id(orp_v256));
+
+# ─── Réglage alpha depuis HA ──────────────────────────────────────────────────
+
+number:
+  - platform: template
+    name: "Alpha compensation température pH"
+    id: alpha_input
+    min_value: -0.01
+    max_value:  0.01
+    step: 0.0001
+    mode: box
+    lambda: return id(alpha);
+    set_action:
+      - lambda: id(alpha) = x;
