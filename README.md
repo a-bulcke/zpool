@@ -1,4 +1,4 @@
-# zpool V1.0
+# zpool V1
 Carte Zigbbe de gestion de piscine avec mesure pH, Orp, température et pression
 
 **Sources :** 
