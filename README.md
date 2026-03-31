@@ -36,11 +36,11 @@ La gestion des pompes est assurée par des prises Zigbee c’est plus simple que
 ## Arduino IDE ##
 Dans File - Preferences... ajouter :
 
-`https://espressif.github.io/arduino-esp32/package_esp32_index.json`
+```https://espressif.github.io/arduino-esp32/package_esp32_index.json```
 
 Choisir une carte `XIAO_ESP32C6`
 
-Dans Tools choisir `Partition scheme: "Zigbee ZCZR 4MB with spiffs"` et `Zigbee Mode: "ZCZR (coordinator/router)"`
+Dans Tools choisir `Partition scheme: ```"Zigbee ZCZR 4MB with spiffs"``` et ```"Zigbee Mode: "ZCZR" (coordinator/router)```
 <img width="718" height="263" alt="image" src="https://github.com/user-attachments/assets/00f9ca7a-6e85-4ec6-9284-5f51421cac6b" />
 
 # Branchements #
@@ -71,7 +71,7 @@ Arduino IDE
 
 Dans File - Preferences... ajouter :
 
-'''https://espressif.github.io/arduino-esp32/package_esp32_index.json'''
+```https://espressif.github.io/arduino-esp32/package_esp32_index.json```
 
 Choisir une carte XIAO_ESP32C6 :
 
@@ -89,7 +89,7 @@ Dans Tools choisir Partition scheme: "Zigbee ZCZR 4MB with spiffs" et Zigbee Mod
 
 Et copier coller le code dans Arduino IDE :
 
-Mettre '''Erase All Flash before sketch Upload : Disabled''' pour conserver l'appairage zigbee
+Mettre ```Erase All Flash before sketch Upload : Disabled``` pour conserver l'appairage zigbee
 
 <img width="504" height="548" alt="image" src="https://github.com/user-attachments/assets/88b685ce-3d30-4234-acdd-36c6a44c3e30" />
 
