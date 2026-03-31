@@ -31,18 +31,6 @@ La gestion des pompes est assurée par des prises Zigbee c’est plus simple que
 ![Capteur de pression 30 Psi](https://fr.aliexpress.com/item/4001179110023.html?)
 <img width="1232" height="472" alt="image" src="https://github.com/user-attachments/assets/8662b836-ded8-4d65-a672-80ff956d5b51" />
 
-
-# Programmation #
-## Arduino IDE ##
-Dans File - Preferences... ajouter :
-
-```https://espressif.github.io/arduino-esp32/package_esp32_index.json```
-
-Choisir une carte `XIAO_ESP32C6`
-
-Dans Tools choisir `Partition scheme: ```"Zigbee ZCZR 4MB with spiffs"``` et ```"Zigbee Mode: "ZCZR" (coordinator/router)```
-<img width="718" height="263" alt="image" src="https://github.com/user-attachments/assets/00f9ca7a-6e85-4ec6-9284-5f51421cac6b" />
-
 # Branchements #
 ## température et pression ##
 
@@ -65,9 +53,9 @@ Redémarrer Zigbee2mqtt puis autoriser l'association.
 
 # Mise à jour #
 
-## Programmation ##
+## Programmation - Mise à jour ##
 
-Arduino IDE
+Dans Arduino IDE
 
 Dans File - Preferences... ajouter :
 
@@ -75,9 +63,7 @@ Dans File - Preferences... ajouter :
 
 Choisir une carte XIAO_ESP32C6 :
 
-
 <img width="678" height="305" alt="image" src="https://github.com/user-attachments/assets/d0d6836c-16a6-46c1-87e2-4705d107b142" />
-
 
 <img width="360" height="305" alt="image" src="https://github.com/user-attachments/assets/5ee56a3f-e4a6-4aa4-a9af-70fcf8b1b8bd" />
 
@@ -92,6 +78,18 @@ Et copier coller le code dans Arduino IDE :
 Mettre ```Erase All Flash before sketch Upload : Disabled``` pour conserver l'appairage zigbee
 
 <img width="504" height="548" alt="image" src="https://github.com/user-attachments/assets/88b685ce-3d30-4234-acdd-36c6a44c3e30" />
+
+Installer les bibliothèques : 
+Chercher et installer : 
+```
+#include "OneWireESP32.h" //esp32-ds18b20 par junkfix
+#include <ADS1X15.h> //ADS1X15 par Rob Tillaart
+#include "RunningAverage.h" // RunningAverage par Rob Tillaart
+```
+<img width="340" height="249" alt="image" src="https://github.com/user-attachments/assets/61d23882-cdc2-45de-8c77-091b2764080c" />
+
+
+<img width="333" height="298" alt="image" src="https://github.com/user-attachments/assets/ee26f123-cd82-4b68-ad05-28b897d303d5" />
 
 
 Puis Upload :
