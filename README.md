@@ -62,3 +62,39 @@ Créer un nouvea convertisseur et coller je contenu de ![ZigbeePoolSensorsCalib.
 <img width="445" height="243" alt="image" src="https://github.com/user-attachments/assets/ba7376f6-c386-4b8f-a940-1161fb9722e9" />
 
 Redémarrer Zigbee2mqtt puis autoriser l'association.
+
+# Mise à jour #
+
+## Programmation ##
+
+Arduino IDE
+
+Dans File - Preferences... ajouter :
+
+'''https://espressif.github.io/arduino-esp32/package_esp32_index.json'''
+
+Choisir une carte XIAO_ESP32C6 :
+
+
+<img width="678" height="305" alt="image" src="https://github.com/user-attachments/assets/d0d6836c-16a6-46c1-87e2-4705d107b142" />
+
+
+<img width="360" height="305" alt="image" src="https://github.com/user-attachments/assets/5ee56a3f-e4a6-4aa4-a9af-70fcf8b1b8bd" />
+
+
+Dans Tools choisir Partition scheme: "Zigbee ZCZR 4MB with spiffs" et Zigbee Mode: "ZCZR (coordinator/router)"
+
+<img width="718" height="263" alt="image" src="https://github.com/user-attachments/assets/d69159c5-b0cd-445a-aaad-a5ce7c5304e6" />
+
+
+Et copier coller le code dans Arduino IDE :
+
+Mettre '''Erase All Flash before sketch Upload : Disabled''' pour conserver l'appairage zigbee
+
+<img width="504" height="548" alt="image" src="https://github.com/user-attachments/assets/88b685ce-3d30-4234-acdd-36c6a44c3e30" />
+
+
+Puis Upload :
+
+<img width="432" height="128" alt="image" src="https://github.com/user-attachments/assets/c4538ff6-32a3-41d7-afa3-70f6845f523d" />
+
