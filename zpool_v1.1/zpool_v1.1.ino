@@ -1,6 +1,6 @@
 /**
  * @brief Publication zigbee  de la temperature (DS18B20) de la pression (AN) du pH et ORP (mV) avec calibration
- * @version 1.11
+ * @version 1.12
  */
 
 #ifndef ZIGBEE_MODE_ZCZR
@@ -246,7 +246,7 @@ float readPHmV(){
 float readORPmV(){
     //lecture ADS
     int16_t val_23 = ADS.readADC_Differential_2_3();  // Lecture différentielle entre AIN2 et AIN3
-    float mvolts_23 = ADS.toVoltage(val_23)*1000.0; 
+    float mvolts_23 = ADS.toVoltage(val_23)*1000.0/2.32; 
     return mvolts_23;
 }
 
