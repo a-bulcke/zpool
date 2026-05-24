@@ -132,7 +132,7 @@ sensor:
           window_size: 5
           send_every: 1
 
-  # pH calculé avec ta formule + compensation température
+  # pH calculé + compensation température
   - platform: template
     name: "pH piscine"
     unit_of_measurement: "pH"
