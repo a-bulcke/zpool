@@ -233,7 +233,7 @@ export default {
          *  DÉCLENCHEURS DE CALIBRATION (binary output)
          * ════════════════════════════════════════════════════════ */
         m.binary({
-            name: "PH401 Calibration",
+            name: "PH401_Calibration",
             cluster: "genBinaryOutput",
             attribute: "presentValue",
             reporting: {attribute: "presentValue", min: "MIN", max: "MAX", change: 1},
@@ -244,7 +244,7 @@ export default {
             endpointName: "4",
         }),
         m.binary({
-            name: "PH700 Calibration",
+            name: "PH700_Calibration",
             cluster: "genBinaryOutput",
             attribute: "presentValue",
             reporting: {attribute: "presentValue", min: "MIN", max: "MAX", change: 1},
@@ -255,7 +255,7 @@ export default {
             endpointName: "5",
         }),
         m.binary({
-            name: "PH1001 Calibration",
+            name: "PH1001_Calibration",
             cluster: "genBinaryOutput",
             attribute: "presentValue",
             reporting: {attribute: "presentValue", min: "MIN", max: "MAX", change: 1},
@@ -266,7 +266,7 @@ export default {
             endpointName: "7",
         }),
         m.binary({
-            name: "ORP256 Calibration",
+            name: "ORP256_Calibration",
             cluster: "genBinaryOutput",
             attribute: "presentValue",
             reporting: {attribute: "presentValue", min: "MIN", max: "MAX", change: 1},

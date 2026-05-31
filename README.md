@@ -1,5 +1,7 @@
-# zpool V1
+# zpool V1.5
 Carte Zigbbe de gestion de piscine avec mesure pH, Orp, température et pression
+
+**Nouvelle version avec 3 points de calibration pour le pH, filtre de Kalman et OTA**
 
 <img width="200" height="200" alt="zPool" src="https://github.com/user-attachments/assets/294d7dc8-a60f-4d32-8710-43b81b064a81" />
 
