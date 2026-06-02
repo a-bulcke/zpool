@@ -41,7 +41,8 @@ La gestion des pompes est assurée par des prises Zigbee c’est plus simple que
 
 ## pH et Orp ##
 
-<img width="682" height="788" alt="image" src="https://github.com/user-attachments/assets/ddd50721-c92d-4cd0-a86b-9bedb6fa5c35" />
+<img width="468" height="651" alt="image" src="https://github.com/user-attachments/assets/0312627c-96ca-472e-b84b-5fe6b13a108c" />
+
 
 # Zigbee2Mqtt #
 Dans Zigbee2mqtt sous Home Assistant, laller dans le menu `Paramètres` puis `console de developpement - convertisseurs externes` :
