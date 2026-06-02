@@ -253,7 +253,7 @@ void setup() {
     analogReadResolution(10);
     Wire.begin();
     ADS.begin();
-    ADS.setGain(0);
+    ADS.setGain(1);
     pinMode(button, INPUT_PULLUP);
 
     /* ── Capteurs (analog input) ─────────────────────────────── */
@@ -512,12 +512,12 @@ uint16_t readPressure() {
 }
 
 float readPHmV() {
-    int16_t v = ADS.readADC_Differential_0_1();
+    int16_t v = ADS.readADC_Differential_2_3();
     return ADS.toVoltage(v) * 1000.0f;
 }
 
 float readORPmV() {
-    int16_t v = ADS.readADC_Differential_2_3();
+    int16_t v = ADS.readADC_Differential_0_1();
     return ADS.toVoltage(v) * 1000.0f / 2.32f;
 }
 
