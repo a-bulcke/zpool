@@ -112,7 +112,7 @@ sensor:
 
   # ADS1115 canal pH (A0-A1)
   - platform: ads1115
-    multiplexer: 'A0_A1'
+    multiplexer: 'A2_A3'
     gain: 4.096
     id: ph_raw_voltage
     update_interval: 10s
@@ -123,7 +123,7 @@ sensor:
 
   # ADS1115 canal ORP (A2-A3)
   - platform: ads1115
-    multiplexer: 'A2_A3'
+    multiplexer: 'A0_A1'
     gain: 4.096
     id: orp_raw_voltage
     update_interval: 10s
