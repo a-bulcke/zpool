@@ -84,7 +84,7 @@ void setup() {
   //ADS1115
   Wire.begin();
   ADS.begin();
-  ADS.setGain(0);
+  ADS.setGain(1);
 
   // Init button switch
   pinMode(button, INPUT_PULLUP);
@@ -238,16 +238,16 @@ uint16_t readPressure(){
 
 float readPHmV(){
     //lecture ADS
-    int16_t val_01 = ADS.readADC_Differential_0_1();  // Lecture différentielle entre AIN0 et AIN1
-    float mvolts_01 = ADS.toVoltage(val_01)*1000.0; 
-    return mvolts_01;
+    int16_t val_23 = ADS.readADC_Differential_2_3();  // Lecture différentielle entre AIN2 et AIN3
+    float mvolts_23 = ADS.toVoltage(val_23)*1000.0; 
+    return mvolts_23;
 }
 
 float readORPmV(){
     //lecture ADS
-    int16_t val_23 = ADS.readADC_Differential_2_3();  // Lecture différentielle entre AIN2 et AIN3
-    float mvolts_23 = ADS.toVoltage(val_23)*1000.0/2.32; 
-    return mvolts_23;
+    int16_t val_01 = ADS.readADC_Differential_0_1();  // Lecture différentielle entre AIN0 et AIN1
+    float mvolts_01 = ADS.toVoltage(val_01)*1000.0/2.32; 
+    return mvolts_01;
 }
 
 float readPH(){
