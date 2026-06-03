@@ -110,7 +110,7 @@ sensor:
     unit_of_measurement: "bar"
     accuracy_decimals: 2
 
-  # ADS1115 canal pH (A0-A1)
+  # ADS1115 canal pH (A2-A3)
   - platform: ads1115
     multiplexer: 'A2_A3'
     gain: 4.096
@@ -121,7 +121,7 @@ sensor:
           window_size: 5
           send_every: 1
 
-  # ADS1115 canal ORP (A2-A3)
+  # ADS1115 canal ORP (A0-A1
   - platform: ads1115
     multiplexer: 'A0_A1'
     gain: 4.096
