@@ -110,9 +110,9 @@ sensor:
     unit_of_measurement: "bar"
     accuracy_decimals: 2
 
-  # ADS1115 canal pH (A0-A1)
+  # ADS1115 canal pH (A2-A3)
   - platform: ads1115
-    multiplexer: 'A0_A1'
+    multiplexer: 'A2_A3'
     gain: 4.096
     id: ph_raw_voltage
     update_interval: 10s
@@ -121,9 +121,9 @@ sensor:
           window_size: 5
           send_every: 1
 
-  # ADS1115 canal ORP (A2-A3)
+  # ADS1115 canal ORP (A0-A1)
   - platform: ads1115
-    multiplexer: 'A2_A3'
+    multiplexer: 'A0_A1'
     gain: 4.096
     id: orp_raw_voltage
     update_interval: 10s
@@ -163,7 +163,7 @@ sensor:
       float v     = id(orp_raw_voltage).state;
       float v_ref = id(orp_v256);
       if (isnan(v)) return NAN;
-      return 256.0f + (v - v_ref) * 1000.0f;
+      return 256.0f + (v - v_ref) * 1000.0f/2.32f;
 
   # Publication des valeurs de calibration pour suivi dans HA
   - platform: template
