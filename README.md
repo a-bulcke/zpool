@@ -52,7 +52,8 @@ Dans Zigbee2mqtt sous Home Assistant, laller dans le menu `Paramètres` puis `co
 
 Créer un nouvea convertisseur et coller je contenu de ![zpool.js](https://github.com/a-bulcke/zpool/blob/pre_1.5/zpool_v1_5/ZPool.js)
 
-<img width="445" height="243" alt="image" src="https://github.com/user-attachments/assets/ba7376f6-c386-4b8f-a940-1161fb9722e9" />
+<img width="445" height="243" alt="zpool_js" src="https://github.com/user-attachments/assets/381d88a7-ba66-4213-951b-3ce5b4966848" />
+
 
 Redémarrer Zigbee2mqtt puis autoriser l'association.
 
