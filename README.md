@@ -1,7 +1,7 @@
 # zpool V2
 Carte Zigbbe de gestion de piscine avec mesure pH, Orp, température et pression
 
-### ATTENTION ERREUR R26=0ohms
+### ATTENTION ERREUR R26=0 ohm
 
 <img width="200" height="200" alt="zPool" src="https://github.com/user-attachments/assets/294d7dc8-a60f-4d32-8710-43b81b064a81" />
 
