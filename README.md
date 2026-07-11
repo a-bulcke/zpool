@@ -66,6 +66,7 @@ Dans Zigbee2mqtt sous Home Assistant, laller dans le menu `Paramètres` puis `co
 
 Créer un nouveau convertisseur (de nom ZPool.js) et coller le contenu de [ZPool.js](https://github.com/a-bulcke/zpool/blob/main/zigbee2mqtt/ZPool.js)
 
+![alt text](img/Zpool.js_Z2M.png)
 
 Redémarrer Zigbee2mqtt puis autoriser l'association.
 
