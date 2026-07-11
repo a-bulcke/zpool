@@ -37,7 +37,8 @@ La carte mesure le pH, l’ Orp, la température et la pression.
 
 La gestion des pompes est assurée par des prises Zigbee c’est plus simple que d’ajouter des relais à la carte.
 
-
+![alt text](<img/Boitier zigbee _ Assembly.png>)
+![alt text](img/front_v2.png)
 
 
 ![Capteur de température DS18B20](https://fr.aliexpress.com/item/32811388557.html?)
@@ -50,25 +51,25 @@ La gestion des pompes est assurée par des prises Zigbee c’est plus simple que
 # Branchements #
 ## température et pression ##
 
-
+![alt text](img/borniers.png)
 
 ## pH et Orp ##
 
-
+![alt text](img/ph_orp.png)
 
 # Zigbee2Mqtt #
 Dans Zigbee2mqtt sous Home Assistant, laller dans le menu `Paramètres` puis `console de developpement - convertisseurs externes` :
 
 <img width="932" height="485" alt="image" src="https://github.com/user-attachments/assets/3587991a-1328-4ba5-8004-b5564d57b140" />
 
-Créer un nouvea convertisseur et coller je contenu de 
+Créer un nouveau convertisseur (de nom ZPool.js) et coller le contenu de [ZPool.js](https://github.com/a-bulcke/zpool/blob/main/zigbee2mqtt/ZPool.js)
 
 
 Redémarrer Zigbee2mqtt puis autoriser l'association.
 
-# Mise à jour #
+# Mise à jour
 
-## Programmation - Mise à jour ##
+## Programmation - Mise à jour
 
 Dans Arduino IDE
 
