@@ -3,6 +3,22 @@ Carte Zigbbe de gestion de piscine avec mesure pH, Orp, température et pression
 
 <img width="200" height="200" alt="zPool" src="https://github.com/user-attachments/assets/294d7dc8-a60f-4d32-8710-43b81b064a81" />
 
+**Les nouveautés :** 
+
+    Filtre sur l'alimentation USB du Xiao
+
+    Régulation LDO coté capteurs pour enlever les bruits provenant du Xiao et de l'ADM3260.
+
+    Alimentation AOP et ADS1115 en 4.7V
+
+    Utilisation d'une référence de tension 2.35V (4.7/2) au lieu des ponts diviseurs non bufferisés
+
+    Gain Orp passe de 2.32 à 2
+
+    Guard ring pour éviter les courants de fuite au niveau des sondes (dont l'impédance est très élevé ce qui peut expliquer l'éventuelle dérive sur la v1.0)
+
+    Connecteur I2C en 3.3V pour écran Oled ou autre
+
 
 **Sources :** 
 
@@ -21,10 +37,7 @@ La carte mesure le pH, l’ Orp, la température et la pression.
 
 La gestion des pompes est assurée par des prises Zigbee c’est plus simple que d’ajouter des relais à la carte.
 
-<img src="/img/pcb_front.png" width="300"><img src="img/Zpool.png" width="300">
-<img src="/img/zpool_schema.png" width="300"><img src="/img/boitier.png" width="300">
-<img src="/img/carte_xiao.jpg" width="300"><img src="/img/zigbee2mqtt.png" width="150">
-<img src="/img/zpoolv1.jpg" width="300">
+
 
 
 ![Capteur de température DS18B20](https://fr.aliexpress.com/item/32811388557.html?)
@@ -37,11 +50,10 @@ La gestion des pompes est assurée par des prises Zigbee c’est plus simple que
 # Branchements #
 ## température et pression ##
 
-<img width="442" height="219" alt="image" src="https://github.com/user-attachments/assets/0b99f36f-bbe0-44be-a799-b48a53e65cc8" />
+
 
 ## pH et Orp ##
 
-<img width="468" height="651" alt="image" src="https://github.com/user-attachments/assets/0312627c-96ca-472e-b84b-5fe6b13a108c" />
 
 
 # Zigbee2Mqtt #
@@ -49,9 +61,8 @@ Dans Zigbee2mqtt sous Home Assistant, laller dans le menu `Paramètres` puis `co
 
 <img width="932" height="485" alt="image" src="https://github.com/user-attachments/assets/3587991a-1328-4ba5-8004-b5564d57b140" />
 
-Créer un nouvea convertisseur et coller je contenu de ![ZigbeePoolSensorsCalib.js](https://github.com/a-bulcke/zpool/blob/main/zigbee2mqtt/ZigbeePoolSensorsCalib.js)
+Créer un nouvea convertisseur et coller je contenu de 
 
-<img width="445" height="243" alt="image" src="https://github.com/user-attachments/assets/ba7376f6-c386-4b8f-a940-1161fb9722e9" />
 
 Redémarrer Zigbee2mqtt puis autoriser l'association.
 
